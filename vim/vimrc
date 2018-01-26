@@ -1,0 +1,116 @@
+execute pathogen#infect()
+Helptags
+
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+set nocompatible          " Vim settings instead of Vi
+
+syntax on                 " Syntax highlight
+filetype plugin indent on " Detect file type
+set t_Co=256              " Enable 256 color mode
+set path+=**              " Add subfolders to path
+set showcmd               " Show incomplete commands
+set showmode              " Show current mode
+set autoread              " Reload files changed outside vim
+
+" Allow backspace in insert mode
+set backspace=indent,eol,start
+
+" Enable bottom menu
+set wildmenu
+set wildmode=longest,full
+
+" Better search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Reload Vim config with F8
+nmap <F8> :source $HOME/.vimrc<ENTER>
+
+" Print lines
+set number
+set ruler
+
+" Tabs
+set expandtab             " Spaces, not tab
+set tabstop=2             " 2 spaces per indentation
+set shiftwidth=2
+set textwidth=0
+set wrapmargin=0
+set softtabstop=2
+
+" Enable clipboard
+set clipboard=unnamedplus
+
+"Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
+" Auto close brace
+inoremap {<CR> {<CR>}<ESC>O
+
+" 4 lines offset at the bottom
+set scrolloff=4
+
+set smartindent
+
+" https://items.sjbach.com/319/configuring-vim-right
+set hidden                " Allow Vim to manage multiple buffers
+nnoremap ' `
+nnoremap ` '
+set history=1000          " Longer history
+
+" Custom commands
+command! Automake :autocmd BufWritePost <buffer> make
+
+" Rust
+"let g:ycm_rust_src_path="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+let g:syntastic_rust_checkers = ['rustc']
+let g:syntastic_rust_rustc_exe = 'cargo check'
+let g:syntastic_rust_rustc_fname = ''
+"let g:syntastic_rust_rustc_args = '--'
+"let g:syntastic_debug = 1
+
+" YouCompleteMe
+set completeopt-=preview
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+highlight SyntasticWarning guibg=Red
+
+" ALE
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" CTRL-t to toggle tree view with CTRL-t
+nmap <silent> <C-t>      :NERDTreeToggle<CR>
+" Set F2 to put the cursor to the nerdtree
+nmap <silent> <F2>       :NERDTreeFind<CR>
+nnoremap <C-LEFT>        :tabprevious<CR>
+nnoremap <C-RIGHT>       :tabnext<CR>
+nnoremap <C-DOWN>        :+tabmove<CR>
+nnoremap <C-UP>          :-tabmove<CR>
+
+" airline
+let g:airline_powerline_fonts = 1     "Powerline fonts
+set laststatus=2                      "Show status bar at startup
+set noshowmode                        "Hide default mode
+set ttimeoutlen=10                    "Fix slow mode update
+
+" Color scheme
+color dracula
+hi SpellCap term=reverse cterm=bold ctermfg=231 ctermbg=24
+hi Pmenu term=reverse ctermbg=234 guibg=#44475a
+hi ErrorMsg term=standout ctermfg=16 ctermbg=203
+
+" No highlight
+nmap <Bslash><Space> :noh<CR>
