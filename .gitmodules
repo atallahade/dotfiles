@@ -37,3 +37,9 @@
 [submodule "vim/vim/bundle/YCM-Generator"]
 	path = vim/vim/bundle/YCM-Generator
 	url = git@github.com:rdnetto/YCM-Generator.git
+[submodule "vim/vim/bundle/dracula-theme"]
+	path = vim/vim/bundle/dracula-theme
+	url = git@github.com:dracula/vim.git
+[submodule "vim/vim/bundle/vim-velocity"]
+	path = vim/vim/bundle/vim-velocity
+	url = git@github.com:lepture/vim-velocity.git

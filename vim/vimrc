@@ -58,6 +58,10 @@ inoremap {<CR> {<CR>}<ESC>O
 set scrolloff=4
 
 set smartindent
+" Stop putting # to first column
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 
 " https://items.sjbach.com/319/configuring-vim-right
 set hidden                " Allow Vim to manage multiple buffers
@@ -67,6 +71,34 @@ set history=1000          " Longer history
 
 " Custom commands
 command! Automake :autocmd BufWritePost <buffer> make
+
+" Column limit at 80 characters
+nmap <F12> :call ColumnLimitToggle()<cr>
+
+function! ColumnLimitToggle()
+  if &colorcolumn
+    setlocal colorcolumn=0
+  else
+    setlocal colorcolumn=80
+  endif
+endfunction
+
+" Disable ex mode key bindings
+map q: <Nop>
+nnoremap Q <nop>
+
+" Enable spellchecking
+let g:spell_enable = 0
+nmap <S-F12> :call SpellcheckToggle()<cr>
+
+function! SpellcheckToggle()
+  if g:spell_enable
+    setlocal nospell
+  else
+    setlocal spell spelllang=en_us
+  endif
+  let g:spell_enable = !g:spell_enable
+endfunction
 
 " Rust
 "let g:ycm_rust_src_path="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
@@ -114,10 +146,45 @@ set noshowmode                        "Hide default mode
 set ttimeoutlen=10                    "Fix slow mode update
 
 " Color scheme
-color dracula
-hi SpellCap term=reverse cterm=bold ctermfg=231 ctermbg=24
-hi Pmenu term=reverse ctermbg=234 guibg=#44475a
-hi ErrorMsg term=standout ctermfg=16 ctermbg=203
+"let g:dracula_colorterm = 0
+"color dracula
+"hi SpellCap term=reverse cterm=bold ctermfg=231 ctermbg=24
+"hi Pmenu term=reverse ctermbg=234 guibg=#44475a
+"hi ErrorMsg term=standout ctermfg=16 ctermbg=203
 
 " No highlight
 nmap <Bslash><Space> :noh<CR>
+
+" CTRLP
+let g:ctrlp_working_path_mode = 0 " Search only from the current directory
+
+" UnMinify
+command! UnMinify call UnMinify()
+function! UnMinify()
+  %s/{\ze[^\r\n]/{\r/g
+  %s/){/) {/g
+  %s/};\?\ze[^\r\n]/\0\r/g
+  %s/;\ze[^\r\n]/;\r/g
+  %s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
+  normal ggVG=
+endfunction
+
+" Escape/unescape & < > HTML entities in range (default current line).
+function! HtmlEntities(line1, line2, action)
+  let search = @/
+  let range = 'silent ' . a:line1 . ',' . a:line2
+  if a:action == 0  " must convert &amp; last
+    execute range . 'sno/&lt;/</eg'
+    execute range . 'sno/&gt;/>/eg'
+    execute range . 'sno/&amp;/&/eg'
+  else              " must convert & first
+    execute range . 'sno/&/&amp;/eg'
+    execute range . 'sno/</&lt;/eg'
+    execute range . 'sno/>/&gt;/eg'
+  endif
+  nohl
+  let @/ = search
+endfunction
+command! -range -nargs=1 Entities call HtmlEntities(<line1>, <line2>, <args>)
+noremap <silent> <Leader>h :Entities 0<CR>
+noremap <silent> <Leader>H :Entities 1<CR>
