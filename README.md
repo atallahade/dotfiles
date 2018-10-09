@@ -7,6 +7,11 @@ $ git clone --recursive https://github.com/atallahade/dotfiles.git ~/.dotfiles
 $ ~/.dotfiles/install.sh
 ```
 
+## Install vim plugins
+```bash
+$ vim +PluginInstall +qall
+```
+
 ## Install YouCompleteMe for Rust
 
 ```bash
