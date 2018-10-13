@@ -18,6 +18,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'cespare/vim-toml'
 Plugin 'lepture/vim-velocity'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'dag/vim-fish'
 call vundle#end()         " required
 
 noremap <Up> <nop>
@@ -205,3 +206,5 @@ endfunction
 command! -range -nargs=1 Entities call HtmlEntities(<line1>, <line2>, <args>)
 noremap <silent> <Leader>h :Entities 0<CR>
 noremap <silent> <Leader>H :Entities 1<CR>
+
+set shell=bash
