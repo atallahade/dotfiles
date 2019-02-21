@@ -164,8 +164,8 @@ set noshowmode                        "Hide default mode
 set ttimeoutlen=10                    "Fix slow mode update
 
 " Color scheme
-"let g:dracula_colorterm = 0
-"color dracula
+let g:dracula_colorterm = 0
+color dracula
 "hi SpellCap term=reverse cterm=bold ctermfg=231 ctermbg=24
 "hi Pmenu term=reverse ctermbg=234 guibg=#44475a
 "hi ErrorMsg term=standout ctermfg=16 ctermbg=203
