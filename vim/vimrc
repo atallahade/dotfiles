@@ -109,6 +109,7 @@ nnoremap Q <nop>
 " Enable spellchecking
 let g:spell_enable = 0
 nmap <S-F12> :call SpellcheckToggle()<cr>
+nmap <C-S-w> :call SpellcheckToggle()<cr>
 
 function! SpellcheckToggle()
   if g:spell_enable
@@ -130,12 +131,7 @@ let g:syntastic_rust_rustc_fname = ''
 " YouCompleteMe
 set completeopt-=preview
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-highlight SyntasticWarning guibg=Red
+nnoremap <C-S-d> :YcmCompleter GoTo<CR>
 
 " ALE
 let g:airline#extensions#ale#enabled = 1
@@ -151,7 +147,10 @@ nnoremap <C-LEFT>        :tabprevious<CR>
 nnoremap <C-RIGHT>       :tabnext<CR>
 nnoremap <C-DOWN>        :+tabmove<CR>
 nnoremap <C-UP>          :-tabmove<CR>
-nnoremap <C-UP>          :-tabmove<CR>
+nnoremap <C-S-LEFT>      :tabprevious<CR>
+nnoremap <C-S-RIGHT>     :tabnext<CR>
+nnoremap <C-S-DOWN>      :+tabmove<CR>
+nnoremap <C-S-UP>        :-tabmove<CR>
 " Disable CTRL + ALT + PageUp/PageDown to move tabs
 map <C-A-PageUp>         <nop>
 map <C-A-PageDown>       <nop>
