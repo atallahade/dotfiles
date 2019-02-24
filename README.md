@@ -3,7 +3,7 @@
 ## Usage
 
 ```bash
-$ git clone --recursive https://github.com/atallahade/dotfiles.git ~/.dotfiles
+$ git clone --recursive git@github.com:atallahade/dotfiles.git ~/.dotfiles
 $ ~/.dotfiles/install.sh
 ```
 
