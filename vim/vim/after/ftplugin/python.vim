@@ -1,2 +1,2 @@
-set colorcolumn=100
+set colorcolumn=80
 au BufWrite * :Autoformat
