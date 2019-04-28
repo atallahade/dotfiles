@@ -1,3 +1,9 @@
+" Load Vundle
+if empty(glob("~/.vim/bundle/Vundle.vim"))
+    execute '!mkdir -p ~/.vim/bundle'
+    execute '!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
+endif
+
 set nocompatible          " Vim settings instead of Vi
 filetype off              " required
 " set the runtime path to include Vundle and initialize
@@ -26,6 +32,9 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
+
+" Redefine leader key
+let mapleader = ","
 
 syntax on                 " Syntax highlight
 filetype plugin indent on " Detect file type
@@ -92,7 +101,7 @@ set history=1000          " Longer history
 command! Automake :autocmd BufWritePost <buffer> make
 
 " Column limit at 80 characters
-nmap <F12> :call ColumnLimitToggle()<cr>
+nmap <leader>l :call ColumnLimitToggle()<cr>
 
 function! ColumnLimitToggle()
   if &colorcolumn
@@ -108,8 +117,7 @@ nnoremap Q <nop>
 
 " Enable spellchecking
 let g:spell_enable = 0
-nmap <S-F12> :call SpellcheckToggle()<cr>
-nmap <C-S-w> :call SpellcheckToggle()<cr>
+nmap <Leader>s :call SpellcheckToggle()<cr>
 
 function! SpellcheckToggle()
   if g:spell_enable
@@ -131,7 +139,7 @@ let g:syntastic_rust_rustc_fname = ''
 " YouCompleteMe
 set completeopt-=preview
 
-nnoremap <C-S-d> :YcmCompleter GoTo<CR>
+nnoremap <Leader>d :YcmCompleter GoTo<CR>
 
 " ALE
 let g:airline#extensions#ale#enabled = 1
@@ -147,10 +155,6 @@ nnoremap <C-LEFT>        :tabprevious<CR>
 nnoremap <C-RIGHT>       :tabnext<CR>
 nnoremap <C-DOWN>        :+tabmove<CR>
 nnoremap <C-UP>          :-tabmove<CR>
-nnoremap <C-S-LEFT>      :tabprevious<CR>
-nnoremap <C-S-RIGHT>     :tabnext<CR>
-nnoremap <C-S-DOWN>      :+tabmove<CR>
-nnoremap <C-S-UP>        :-tabmove<CR>
 " Disable CTRL + ALT + PageUp/PageDown to move tabs
 map <C-A-PageUp>         <nop>
 map <C-A-PageDown>       <nop>
@@ -171,7 +175,7 @@ color dracula
 "hi ErrorMsg term=standout ctermfg=16 ctermbg=203
 
 " No highlight
-nmap <Bslash><Space> :noh<CR>
+nmap <Leader><Space> :noh<CR>
 
 " CTRLP
 let g:ctrlp_working_path_mode = 0 " Search only from the current directory
