@@ -1,10 +1,10 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
 	name = Adel Atallah
  	email = 2213999+atallahade@users.noreply.github.com
 [core]
-	pager = ~/.dotfiles/git/diff-so-fancy | less --tabs=4 -RFX
+	pager = ~/.local/bin/diff-so-fancy | less --tabs=4 -RFX
+[interactive]
+  diffFilter = ~/.local/bin/diff-so-fancy --patch
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -21,3 +21,7 @@
 	whitespace = red reverse
 [alias]
 	cp = cherry-pick
+  c = "checkout"
+  cb = "checkout -b"
+  cm = "checkout master"
+  rem = "!git fetch -a; git rebase --rebase-merges origin/master"

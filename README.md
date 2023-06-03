@@ -2,19 +2,8 @@
 
 ## Usage
 
+Assuming we start from a fresh install:
 ```bash
-$ git clone --recursive git@github.com:atallahade/dotfiles.git ~/.dotfiles
-$ ~/.dotfiles/install.sh
-```
-
-## Install vim plugins
-```bash
-$ vim +PluginInstall +qall
-```
-
-## Install YouCompleteMe for Rust
-
-```bash
-$ cd ~/.dotfiles/vim/vim/bundle/YouCompleteMe/
-$ ./install.py --rust-completer
+$ sudo apt-get update; sudo apt install -y git; git clone https://github.com/atallahade/dotfiles.git ~/dotfiles
+$ ~/dotfiles/install-debian-bullseye.sh
 ```
