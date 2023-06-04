@@ -13,7 +13,7 @@ sudo apt install -y build-essential cmake vim-nox python3-dev mono-complete \
 echo "Setting fish as the default shell..."
 chsh -s /usr/bin/fish
 echo "Copying dotfiles..."
-cp -rfs "$(dirname $(realpath "$0"))/home/." ~/
+./symlink-dotfiles.sh
 echo "Setting up vim..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
