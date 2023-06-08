@@ -26,6 +26,8 @@ nnoremap <Leader><S-j>   :+tabmove<CR>
 nnoremap <Leader><S-k>   :-tabmove<CR>
 set term=xterm-256color
 
+colorscheme jellybeans
+
 syntax on
 set noshowmode  " already with vim-airline
 set number
