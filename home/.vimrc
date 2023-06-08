@@ -5,6 +5,7 @@ call plug#begin()
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'cespare/vim-toml', { 'branch': 'main' }
 Plug 'psf/black', { 'branch': 'stable' }
