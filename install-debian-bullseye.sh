@@ -22,3 +22,6 @@ vim +PlugInstall +qa
 echo "Setting up python tools..."
 curl -sSL https://install.python-poetry.org | python3 -
 pip install black ruff
+echo "Installing npm tools..."
+sudo npm install -g jsonlint
+sudo npm install -g fixjson
