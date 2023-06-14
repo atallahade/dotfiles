@@ -21,7 +21,7 @@ vim +PlugInstall +qa
 (cd ~/.vim/plugged/YouCompleteMe && python3 install.py --all)
 echo "Setting up python tools..."
 curl -sSL https://install.python-poetry.org | python3 -
-pip install black ruff
+pip install black ruff mypy
 echo "Installing npm tools..."
 sudo npm install -g jsonlint
 sudo npm install -g fixjson
