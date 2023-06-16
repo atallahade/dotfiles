@@ -7,6 +7,7 @@ mkdir -p  ~/.local/bin
 ln -s $(which fdfind) ~/.local/bin/fd
 # Python
 sudo apt install -y python3 python3-venv python3-pip
+curl https://pyenv.run | bash
 # YouCompleteMe requirements
 sudo apt install -y build-essential cmake vim-nox python3-dev mono-complete \
   golang nodejs openjdk-17-jdk openjdk-17-jre npm
