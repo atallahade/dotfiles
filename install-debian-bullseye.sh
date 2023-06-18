@@ -26,3 +26,5 @@ pip install black ruff mypy
 echo "Installing npm tools..."
 sudo npm install -g jsonlint
 sudo npm install -g fixjson
+sudo npm install -g htmlhint
+sudo npm install -g js-beautify
