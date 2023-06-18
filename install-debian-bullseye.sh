@@ -27,4 +27,5 @@ echo "Installing npm tools..."
 sudo npm install -g jsonlint
 sudo npm install -g fixjson
 sudo npm install -g htmlhint
-sudo npm install -g js-beautify
+sudo npm install -g jshint
+sudo npm install -g prettier
