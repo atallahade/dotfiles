@@ -18,6 +18,9 @@ set -Ux PYENV_ROOT $HOME/.pyenv
 set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 pyenv init - | source
 
+# Use latest node version
+nvm use node
+
 if test ! "$TERM" = "screen" && test ! "$TERM" = "tmux" && test -z "$TMUX"
   if tmux has-session
     tmux a

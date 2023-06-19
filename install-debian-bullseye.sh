@@ -10,7 +10,11 @@ sudo apt install -y python3 python3-venv python3-pip
 curl https://pyenv.run | bash
 # YouCompleteMe requirements
 sudo apt install -y build-essential cmake vim-nox python3-dev mono-complete \
-  golang nodejs openjdk-17-jdk openjdk-17-jre npm
+  golang nodejs openjdk-17-jdk openjdk-17-jre
+nvm_version=$(git ls-remote --sort=version:refname --tags https://github.com/nvm-sh/nvm.git | tail -n1 | sed 's/.*\/\([^$^]*\).*/\1/')
+echo "Installing nvm ${nvm_version}..."
+curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_version}/install.sh" | bash
+nvm install node --default
 echo "Setting fish as the default shell..."
 chsh -s /usr/bin/fish
 echo "Copying dotfiles..."
@@ -29,3 +33,5 @@ sudo npm install -g fixjson
 sudo npm install -g htmlhint
 sudo npm install -g jshint
 sudo npm install -g prettier
+sudo npm install -g stylelint
+sudo npm install -g stylelint-config-standard
