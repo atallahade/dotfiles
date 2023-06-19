@@ -81,7 +81,7 @@ endfunction
 let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let b:ale_enabled = 0 " only enable ALE for specific buffers
+let g:ale_linters_explicit = 1
 
 " CTRL-t to toggle tree view with CTRL-t
 nmap <silent> <C-t>      :NERDTreeToggle<CR>
