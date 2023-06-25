@@ -100,7 +100,4 @@ nmap <F3> <plug>(YCMHover)
 " Remove preview window
 set completeopt-=preview
 
-" No numbers
-nmap <Leader>n :set nonumber<CR>
-
 set shell=bash
