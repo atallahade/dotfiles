@@ -28,6 +28,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qa
 (cd ~/.vim/plugged/YouCompleteMe && python3 install.py --all)
+# ctags
+sudo apt-get install -y gcc make \
+    pkg-config autoconf automake \
+    python3-docutils \
+    libseccomp-dev \
+    libjansson-dev \
+    libyaml-dev \
+    libxml2-dev
+(git clone https://github.com/universal-ctags/ctags.git; cd ctags; git checkout 3af41354; ./autogen.sh; ./configure; make; sudo make install; cd ..; rm -rf ctags)
 echo "Setting up python tools..."
 curl -sSL https://install.python-poetry.org | python3 -
 pip install black ruff mypy

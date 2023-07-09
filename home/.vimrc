@@ -9,6 +9,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'cespare/vim-toml', { 'branch': 'main' }
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'preservim/tagbar'
 call plug#end()
 
 let mapleader = ","
@@ -99,5 +100,7 @@ let g:ycm_auto_hover=''
 nmap <F3> <plug>(YCMHover)
 " Remove preview window
 set completeopt-=preview
+
+nmap <C-i> :TagbarToggle<CR><C-w>w
 
 set shell=bash
